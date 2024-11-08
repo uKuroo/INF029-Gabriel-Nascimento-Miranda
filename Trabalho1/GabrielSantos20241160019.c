@@ -24,8 +24,10 @@
 #include <stdio.h>
 #include "GabrielSantos20241160019.h" // Substitua pelo seu arquivo de header renomeado
 #include <stdlib.h>
+#include <string.h>
 
 DataQuebrada quebraData(char data[]);
+int DiasNoMes(int mes, int ano);
 
 /*
 ## função utilizada para testes  ##
@@ -93,7 +95,21 @@ int teste(int a)
 int q1(char data[])
 {
   int datavalida = 1;
+  int TAM = strlen(data);
 
+  for(int i = 0; i < TAM; i++)
+    if(data[i] != '/' && !(data[i] >= '0' && data[i] <= '9')) datavalida = 0;
+
+  DataQuebrada DataQ = quebraData(data);
+
+  if(DataQ.valido)
+  {
+  int dia = DataQ.iDia, mes = DataQ.iMes, ano = DataQ.iAno;
+
+  if(dia<1 || dia>31 || mes<1 || mes>12) datavalida = 0;
+  
+  if(dia > DiasNoMes(mes, ano)) datavalida = 0;
+  
   //quebrar a string data em strings sDia, sMes, sAno
 
 
@@ -103,10 +119,11 @@ int q1(char data[])
       return 1;
   else
       return 0;
+  }
 }
 
 
-
+#pragma region Questoes restantes
 /*
  Q2 = diferença entre duas datas
  @objetivo
@@ -218,6 +235,8 @@ int q6(int numerobase, int numerobusca)
     return qtdOcorrencias;
 }
 
+#pragma endregion
+
 
 
 
@@ -275,7 +294,20 @@ DataQuebrada quebraData(char data[]){
   dq.iAno = atoi(sAno); 
 
 	dq.valido = 1;
-    
+
   return dq;
 }
 
+int DiasNoMes(int mes, int ano)
+{
+  int Bissexto = 0;
+  if((ano % 4 == 0 && ano % 100 != 0) || ano % 400 == 0) Bissexto = 1;
+
+  if(mes == 4 || mes == 6 || mes == 9 || mes == 11) return 30;
+  else if(mes == 2)
+  {
+    if(Bissexto) return 29;
+    else return 28;
+  }
+  else return 31;
+}
