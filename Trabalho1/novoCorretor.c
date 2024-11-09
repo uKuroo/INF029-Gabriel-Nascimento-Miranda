@@ -14,16 +14,16 @@ void testQ6();
 int main(){
     printf("----------q1----------\n");
     testQ1(); // 10 testes
-    /*printf("----------q2----------\n");
-    testQ2(); // 35 testes*/
-    printf("----------q3----------\n");
-    testQ3(); // 13 testes
-    /*printf("----------q4----------\n");
-    testQ4(); // 22 testes
-    printf("----------q5----------\n");
-    testQ5(); // 10 testes
-    printf("----------q6----------\n");
-    testQ6(); // 10 testes */
+    //printf("----------q2----------\n");
+    //testQ2(); // 35 testes
+    //printf("----------q3----------\n");
+    //testQ3(); // 13 testes
+    //printf("----------q4----------\n");
+    //testQ4(); // 22 testes
+    //printf("----------q5----------\n");
+    //testQ5(); // 10 testes
+    //printf("----------q6----------\n");
+    //testQ6(); // 10 testes
     
     
 }
@@ -49,8 +49,7 @@ void testQ1(){
     strcpy(str,"1/R/2016");
     printf("%d\n",q1(str) == 0);
     strcpy(str,"1/12/19");
-    printf("%d\n",q1(str) == 1); 
-
+    printf("%d\n",q1(str) == 1);
 }
 
 void testQ2(){

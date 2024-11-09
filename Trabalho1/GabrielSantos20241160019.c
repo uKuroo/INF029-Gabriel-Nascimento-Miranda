@@ -91,6 +91,7 @@ int teste(int a)
     Não utilizar funções próprias de string (ex: strtok)   
     pode utilizar strlen para pegar o tamanho da string
  */
+
 int q1(char data[])
 {
   int datavalida = 1;
@@ -112,7 +113,7 @@ int q1(char data[])
   //quebrar a string data em strings sDia, sMes, sAno
 
 
-  //printf("%s\n", data);
+  printf("%s\n", data);
 
   if (datavalida)
       return 1;
@@ -162,6 +163,8 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
     
 }
 
+
+
 /*
  Q3 = encontrar caracter em texto
  @objetivo
@@ -197,6 +200,8 @@ int q3(char *texto, char c, int isCaseSensitive)
     return qtdOcorrencias;
 }
 
+
+
 /*
  Q4 = encontrar palavra em texto
  @objetivo
@@ -214,10 +219,12 @@ int q3(char *texto, char c, int isCaseSensitive)
  */
 int q4(char *strTexto, char *strBusca, int posicoes[30])
 {
-    int qtdOcorrencias = -1;
+    int qtdOcorrencias = 0;
 
     return qtdOcorrencias;
 }
+
+
 
 /*
  Q5 = inverte número
@@ -231,9 +238,19 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
 
 int q5(int num)
 {
+    int invertido = 0, casa = 0;
 
-    return num;
+    while(num != 0)
+    {
+      casa = num % 10;
+      invertido = (invertido*10) + casa;
+      num/=10;
+    }
+    
+    return invertido;
 }
+
+
 
 /*
  Q6 = ocorrência de um número em outro
@@ -247,12 +264,26 @@ int q5(int num)
 
 int q6(int numerobase, int numerobusca)
 {
-    int qtdOcorrencias;
+    int qtdOcorrencias = 0;
+    int digitosBusca = 10, verificadorBusca = numerobusca;
+
+    while(verificadorBusca/10 != 0)
+    {
+      digitosBusca*=10;
+      verificadorBusca/=10;
+    }
+
+    while(numerobase != 0)
+    {
+      if(numerobase % digitosBusca == numerobusca)
+      {  
+        qtdOcorrencias++; 
+        numerobase/=digitosBusca;
+      }else numerobase/=10;
+    }
+
     return qtdOcorrencias;
 }
-
-
-
 
 DataQuebrada quebraData(char data[]){
   DataQuebrada dq;
