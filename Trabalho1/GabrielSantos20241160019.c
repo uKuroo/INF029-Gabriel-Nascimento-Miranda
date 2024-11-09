@@ -28,7 +28,6 @@
 
 DataQuebrada quebraData(char data[]);
 int DiasNoMes(int mes, int ano);
-
 /*
 ## função utilizada para testes  ##
 
@@ -113,7 +112,7 @@ int q1(char data[])
   //quebrar a string data em strings sDia, sMes, sAno
 
 
-  printf("%s\n", data);
+  //printf("%s\n", data);
 
   if (datavalida)
       return 1;
@@ -123,7 +122,6 @@ int q1(char data[])
 }
 
 
-#pragma region Questoes restantes
 /*
  Q2 = diferença entre duas datas
  @objetivo
@@ -176,7 +174,25 @@ DiasMesesAnos q2(char datainicial[], char datafinal[])
  */
 int q3(char *texto, char c, int isCaseSensitive)
 {
-    int qtdOcorrencias = -1;
+    int qtdOcorrencias = 0;
+	  char *TextoT = malloc(strlen(texto));
+
+	  strcpy(TextoT, texto);
+
+    if(!isCaseSensitive)
+    {
+      if(c >= 'a' && c <= 'z') c-=32;
+      for(int i = 0; TextoT[i] != '\0'; i++)
+      {
+        if(TextoT[i] >= 'a' && TextoT[i] <= 'z')
+          TextoT[i]-=32;
+      }
+    }
+
+    for(int i = 0; TextoT[i] != '\0'; i++)
+    {
+      if(c == TextoT[i]) qtdOcorrencias+=1;
+    }
 
     return qtdOcorrencias;
 }
@@ -234,8 +250,6 @@ int q6(int numerobase, int numerobusca)
     int qtdOcorrencias;
     return qtdOcorrencias;
 }
-
-#pragma endregion
 
 
 
@@ -311,3 +325,4 @@ int DiasNoMes(int mes, int ano)
   }
   else return 31;
 }
+
