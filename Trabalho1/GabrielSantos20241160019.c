@@ -28,8 +28,7 @@
 
 DataQuebrada quebraData(char data[]);
 int DiasNoMes(int mes, int ano);
-int CopiarTextoInteiro();
-int VerificadorBissexto();
+int VerificadorBissexto(int ano);
 /*
 ## função utilizada para testes  ##
 
@@ -425,26 +424,6 @@ int DiasNoMes(int mes, int ano)
   else return 31;
 }
 
-int CopiarTextoInteiro(char *texto, int *textoInteiro)
-{
-    int texto_int[100];
-    int i, j;
-    for (i = 0; texto[i] != '\0'; i ++)
-    {
-        texto_int[i] = texto[i];
-        texto_int[i + 1] = texto[i + 1];
-    }
-    int k = 0;
-    for (j = 0; j < i; j++)
-    {
-        if (texto_int[j] != -61)
-        {
-            textoInteiro[k] = texto_int[j];
-            k++;
-        }
-    }
-    return k;
-}
 
 int VerificadorBissexto(int ano)
 {
