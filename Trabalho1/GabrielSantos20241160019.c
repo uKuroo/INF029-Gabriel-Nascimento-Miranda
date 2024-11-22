@@ -257,7 +257,7 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
     int qtdOcorrencias = 0;
     int pos = 0, achou;
     int i, j, k;
-
+    int acentos = 0;
     for(i = 0; i < strlen(strTexto); i++)
     {
       achou = 0;
@@ -266,6 +266,7 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
       {
         if(strTexto[k] == -61)
         {
+          acentos++;
           k++;
         }
         if(strTexto[k] == strBusca[j])
@@ -281,8 +282,8 @@ int q4(char *strTexto, char *strBusca, int posicoes[30])
       if(achou == strlen(strBusca))
       {
         qtdOcorrencias++;
-        posicoes[pos] = i + 1;
-        posicoes[pos + 1] = k;
+        posicoes[pos] = i + 1 - acentos;
+        posicoes[pos + 1] = k - acentos;
         pos += 2;
         i += strlen(strBusca) - 1;
       }
