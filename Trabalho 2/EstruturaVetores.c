@@ -316,7 +316,6 @@ Rertono (int)
 */
 int modificarTamanhoEstruturaAuxiliar(int pos, int novotamanho)
 {
-
     if(validarPos(pos) == POSICAO_INVALIDA) return POSICAO_INVALIDA;
     if(arrayPrincipal[pos-1].array == NULL) return SEM_ESTRUTURA_AUXILIAR;
     if(arrayPrincipal[pos-1].tamanho + novotamanho < 1) return NOVO_TAMANHO_INVALIDO;
@@ -342,7 +341,6 @@ Retorno (int)'
 */
 int getQuantidadeElementosEstruturaAuxiliar(int posicao)
 {
-
     if(validarPos(posicao) == POSICAO_INVALIDA) return POSICAO_INVALIDA;
     if(arrayPrincipal[posicao-1].array == NULL) return SEM_ESTRUTURA_AUXILIAR;
     if(arrayPrincipal[posicao-1].ultima == 0) return ESTRUTURA_AUXILIAR_VAZIA;
@@ -367,11 +365,12 @@ No *montarListaEncadeadaComCabecote()
         for(int j = 0; j < arrayPrincipal[i].ultima; j++)
         {
             if(list == NULL)
-            { // inicializa a lista
+            {
                 list = malloc(sizeof(No));
                 list->conteudo = arrayPrincipal[i].array[j];
                 list->prox = NULL;
-            }else
+            }
+            else
             {
                 No *listaP2 = list;
                 No *newL = malloc(sizeof(No));
@@ -384,7 +383,8 @@ No *montarListaEncadeadaComCabecote()
                     newL->conteudo = arrayPrincipal[i].array[j];
                     newL->prox = NULL;
                     listaP2->prox = newL;
-                }else
+                }
+                else
                 {
                     newL->conteudo = arrayPrincipal[i].array[j];
                     newL->prox = NULL;
@@ -425,6 +425,7 @@ void destruirListaEncadeadaComCabecote(No **inicio)
 {
     No *listaP2 = *inicio;
     No *aux;
+
     while(listaP2 != NULL)
     {
         aux = listaP2->prox;
