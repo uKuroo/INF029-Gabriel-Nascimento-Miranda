@@ -17,7 +17,7 @@ Pos *arrayPrincipal;
 // Verifica se tá entre 1 e 10
 int validarPos(int pos)
 {
-    if(pos < 1 || pos > 10) return POSICAO_INVALIDA; 
+    if(pos < 1 || pos > TAM) return POSICAO_INVALIDA; 
     return SUCESSO;
 }
 /*
